@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f5f5f5;
+  display: grid;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.back-link {
+  float: left;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+.input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f8f8f8;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  color: #333;
+}
+
+.subtitle {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.status,
+.score {
+  margin: 1rem 0;
+}
+
+.result {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f8f8f8;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  color: #333;
+}
+
+.actions {
+  text-align: center;
+  max-width: 500px;
+}
+
+.btn:hover {
+  background: #e0e0e0;
+}

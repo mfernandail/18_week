@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guess the Number</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="./guess.css" />
+</head>
+<body>
+  <main>
+    <a href="../index.html" class="btn back-link">← Back</a>
+    <h1>🔢 Guess the Number</h1>
+
+    <section class="game" aria-labelledby="game-title">
+      <h2 id="game-title">Try to guess the secret number!</h2>
+      <p class="subtitle">I'm thinking of a number between <strong>1</strong> and <strong>100</strong>.</p>
+
+      <div class="controls">
+        <label for="guessInput" class="sr-only">Your guess: </label>
+        <input
+          id="guessInput"
+          class="input"
+          type="number"
+          min="1"
+          max="100"
+          placeholder="1"
+          aria-label="Enter a number between 1 and 100"
+        />
+        <button id="guessBtn" class="btn">Guess</button>
+      </div>
+
+      <div class="status" aria-live="polite">
+        <p id="message">Make a guess!</p>
+        <p class="muted">Attempts: <span id="attempts">0</span></p>
+      </div>
+
+      <div class="actions">
+        <button id="resetBtn" class="btn">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./guess.js" defer></script>
+</body>
+</html>

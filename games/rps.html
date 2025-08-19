@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="./rps.css" />
+</head>
+<body>
+  <main>
+    <a href="../index.html" class="btn back-link">← Back</a>
+    <h1>✊✋✌ Rock, Paper, Scissors</h1>
+
+    <section class="game" aria-labelledby="game-title">
+      <h2 id="game-title">Play vs Computer</h2>
+      <p class="subtitle">Choose your move:</p>
+
+      <div class="choices">
+        <button class="btn" id="rock" data-choice="rock" aria-label="Rock">✊ Rock</button>
+        <button class="btn" id="paper" data-choice="paper" aria-label="Paper">✋ Paper</button>
+        <button class="btn" id="scissors" data-choice="scissors" aria-label="Scissors">✌ Scissors</button>
+      </div>
+
+      <div class="status" aria-live="polite">
+        <p><strong>You:</strong> <span id="you">—</span></p>
+        <p><strong>CPU:</strong> <span id="cpu">—</span></p>
+        <p class="result"><strong>Result:</strong> <span id="result">Make your move!</span></p>
+      </div>
+
+      <div class="score">
+        <p><strong>Score</strong></p>
+        <p>Player: <span id="score-you">0</span> — CPU: <span id="score-cpu">0</span></p>
+      </div>
+
+      <div class="actions">
+        <button class="btn reset" id="reset">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./rps.js" defer></script>
+</body>
+</html>

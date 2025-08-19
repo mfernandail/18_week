@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dice Game</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="./dice.css" />
+</head>
+<body>
+  <main>
+    <a href="../index.html" class="btn back-link">← Back</a>
+    <h1>🎲 Dice Game (Pig)</h1>
+
+    <section class="game" aria-labelledby="game-title">
+      <h2 id="game-title">First to 100 points wins!</h2>
+      <p class="subtitle">Roll to build your round score. If you roll a 1, you lose the round score and your turn ends. Hold to bank points.</p>
+
+      <div class="scoreboard">
+        <div class="player" id="p1" aria-live="polite">
+          <h3>Player 1 <span class="turn-indicator" id="turnP1" aria-hidden="true">●</span></h3>
+          <p>Total: <span id="totalP1">0</span></p>
+          <p>Round: <span id="roundP1">0</span></p>
+        </div>
+
+        <div class="dice-area" aria-live="polite">
+          <div class="dice" id="dice">—</div>
+          <p id="lastRoll" class="muted">Roll the dice!</p>
+        </div>
+
+        <div class="player" id="p2" aria-live="polite">
+          <h3>Player 2 <span class="turn-indicator" id="turnP2" aria-hidden="true">○</span></h3>
+          <p>Total: <span id="totalP2">0</span></p>
+          <p>Round: <span id="roundP2">0</span></p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="rollBtn">Roll</button>
+        <button class="btn" id="holdBtn">Hold</button>
+        <button class="btn" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="status" aria-live="polite">
+        <p id="message">Player 1’s turn.</p>
+      </div>
+    </section>
+    
+    <!-- Tu lógica irá en dice.js si quieres luego -->
+    <script src="./dice.js" defer></script>
+  </main>
+</body>
+</html>
