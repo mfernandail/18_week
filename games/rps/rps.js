@@ -7,6 +7,8 @@ const $scoreCpuLabel = document.getElementById('score-cpu')
 const $reset = document.getElementById('reset')
 
 const CHOICES = ['rock', 'paper', 'scissors']
+const CHOICE_EMOJIS = { rock: '✊', paper: '✋', scissors: '✌' }
+
 let WIN = 0
 let LOSE = 0
 
@@ -32,13 +34,13 @@ function onChoiceClick(e) {
 }
 
 function startGame(playerChoice) {
-  $youLabel.textContent = playerChoice
+  $youLabel.textContent = CHOICE_EMOJIS[playerChoice] + ' ' + playerChoice
 
   const indexChoice = Math.floor(Math.random() * 3)
 
   const cpuChoice = CHOICES[indexChoice]
 
-  $cpuLabel.textContent = cpuChoice
+  $cpuLabel.textContent = CHOICE_EMOJIS[cpuChoice] + ' ' + cpuChoice
 
   if (playerChoice === cpuChoice) return 'Draw'
 
