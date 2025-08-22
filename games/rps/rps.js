@@ -12,6 +12,8 @@ const CHOICE_EMOJIS = { rock: '✊', paper: '✋', scissors: '✌' }
 let WIN = 0
 let LOSE = 0
 
+
+
 $choices.addEventListener('click', onChoiceClick)
 $reset.addEventListener('click', reset)
 
@@ -54,13 +56,27 @@ function startGame(playerChoice) {
   return win
 }
 
+// function reset() {
+//   WIN = 0
+//   LOSE = 0
+
+//   $scoreYouLabel.textContent = 0
+//   $scoreCpuLabel.textContent = 0
+//   $resultLabel.textContent = 'Make your move!'
+//   $youLabel.textContent = '-'
+//   $cpuLabel.textContent = '-'
+// }
+
 function reset() {
   WIN = 0
   LOSE = 0
+  updateDisplay()
+}
 
-  $scoreYouLabel.textContent = 0
-  $scoreCpuLabel.textContent = 0
+function updateDisplay() {
+  $scoreYouLabel.textContent = WIN
+  $scoreCpuLabel.textContent = LOSE
   $resultLabel.textContent = 'Make your move!'
-  $youLabel.textContent = '-'
-  $cpuLabel.textContent = '-'
+  $youLabel.textContent = '—'
+  $cpuLabel.textContent = '—'
 }
