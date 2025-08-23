@@ -7,6 +7,13 @@ const $scoreCpuLabel = document.getElementById('score-cpu')
 const $scoreDrawLabel = document.getElementById('score-draws')
 const $reset = document.getElementById('reset')
 
+let gameStats = {
+  wins: 0,
+  loses: 0,
+  draws: 0,
+  totalGames: 0,
+}
+
 const CHOICES = ['rock', 'paper', 'scissors']
 const CHOICE_EMOJIS = { rock: '✊', paper: '✋', scissors: '✌' }
 
@@ -16,6 +23,8 @@ let DRAW = 0
 
 $choices.addEventListener('click', onChoiceClick)
 $reset.addEventListener('click', reset)
+
+loadGameData()
 
 function onChoiceClick(e) {
   const btn = e.target.closest('button[data-choice]')
@@ -27,12 +36,19 @@ function onChoiceClick(e) {
 
   if (result === 'Win') {
     WIN++
+    gameStats.wins++
   } else if (result === 'Lose') {
     LOSE++
+    gameStats.loses++
   } else {
     DRAW++
+    gameStats.draws++
   }
+  gameStats.totalGames++
 
+  saveGameData()
+
+  console.log(gameStats)
   $scoreYouLabel.textContent = WIN
   $scoreCpuLabel.textContent = LOSE
   $scoreDrawLabel.textContent = DRAW
@@ -59,22 +75,18 @@ function startGame(playerChoice) {
   return win
 }
 
-// function reset() {
-//   WIN = 0
-//   LOSE = 0
-
-//   $scoreYouLabel.textContent = 0
-//   $scoreCpuLabel.textContent = 0
-//   $resultLabel.textContent = 'Make your move!'
-//   $youLabel.textContent = '-'
-//   $cpuLabel.textContent = '-'
-// }
-
 function reset() {
   WIN = 0
   LOSE = 0
   DRAW = 0
   updateDisplay()
+
+  gameStats = {
+    wins: 0,
+    loses: 0,
+    draws: 0,
+    totalGames: 0,
+  }
 }
 
 function updateDisplay() {
@@ -84,4 +96,24 @@ function updateDisplay() {
   $resultLabel.textContent = 'Make your move!'
   $youLabel.textContent = '—'
   $cpuLabel.textContent = '—'
+  localStorage.removeItem('rpsGameStats')
+}
+
+function saveGameData() {
+  try {
+    localStorage.setItem('rpsGameStats', JSON.stringify(gameStats))
+  } catch (error) {
+    console.error('Error saving game data:', error)
+  }
+}
+
+function loadGameData() {
+  try {
+    const saveData = localStorage.getItem('rpsGameStats')
+    if (saveData) {
+      gameStats = { ...gameStats, ...JSON.parse(saveData) }
+    }
+  } catch (error) {
+    console.error('Error loading game data:', error)
+  }
 }
