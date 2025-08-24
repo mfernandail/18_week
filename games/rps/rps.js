@@ -108,6 +108,7 @@ function saveGameData() {
 }
 
 function loadGameData() {
+  console.log('first')
   try {
     const saveData = localStorage.getItem('rpsGameStats')
     if (saveData) {
