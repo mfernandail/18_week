@@ -10,12 +10,22 @@ const $totalP2 = document.getElementById('totalP2')
 const $roundP2 = document.getElementById('roundP2')
 
 const $dice = document.getElementById('dice')
+const $diceNumber = document.getElementById('dice-number')
 
 const $turnP1 = document.getElementById('turnP1')
 const $turnP2 = document.getElementById('turnP2')
 
 const TARGET = 100
 
+const DICE_EMOJIS = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅']
+const DICE_FACES = {
+  1: '⚀',
+  2: '⚁',
+  3: '⚂',
+  4: '⚃',
+  5: '⚄',
+  6: '⚅',
+}
 let TURN = 'P1'
 let TOTAL_P1 = 0
 let TOTAL_P2 = 0
@@ -30,11 +40,12 @@ $rollBtn.addEventListener('click', onRoll)
 $holdBtn.addEventListener('click', onHold)
 $resetBtn.addEventListener('click', onReset)
 
-initUI()
+reset()
 
 function onRoll() {
   DICE = Math.floor(Math.random() * 6) + 1
-  $dice.textContent = DICE
+  $dice.textContent = DICE_EMOJIS[DICE - 1]
+  $diceNumber.textContent = DICE
 
   if (DICE === 1) {
     roundAccum = 0
@@ -90,13 +101,14 @@ function onReset() {
   DICE = null
   TURN = 'P1'
 
-  initUI()
+  reset()
   setControlsEnabled(true)
   $message.textContent = 'Player 1’s turn.'
 }
 
-function initUI() {
+function reset() {
   $dice.textContent = '—'
+  $diceNumber.textContent = ''
   $totalP1.textContent = '0'
   $totalP2.textContent = '0'
   $roundP1.textContent = '0'
@@ -140,118 +152,3 @@ function setControlsEnabled(enabled) {
   $rollBtn.disabled = !enabled
   $holdBtn.disabled = !enabled
 }
-
-// const $rollBtn = document.getElementById('rollBtn')
-// const $holdBtn = document.getElementById('holdBtn')
-// const $resetBtn = document.getElementById('resetBtn')
-// const $message = document.getElementById('message')
-
-// const $totalP1 = document.getElementById('totalP1')
-// const $roundP1 = document.getElementById('roundP1')
-
-// const $totalP2 = document.getElementById('totalP2')
-// const $roundP2 = document.getElementById('roundP2')
-
-// const $dice = document.getElementById('dice')
-
-// const $turnP1 = document.getElementById('turnP1')
-// const $turnP2 = document.getElementById('turnP2')
-
-// let TURN = 'P1'
-// let TOTAL_P1 = 0
-// let TOTAL_P2 = 0
-
-// let RAUND_P1 = 0
-// let RAUND_P2 = 0
-// let TOTAL_RAUND = 0
-// let DICE
-
-// $rollBtn.addEventListener('click', startGame)
-// $holdBtn.addEventListener('click', holdFn)
-// $resetBtn.addEventListener('click', resetFn)
-
-// function startGame() {
-//   DICE = Math.floor(Math.random() * 6) + 1
-//   $dice.textContent = DICE
-
-//   console.log(TURN)
-//   if (TURN === 'P1') {
-//     if (DICE !== 1) {
-//       TOTAL_RAUND = TOTAL_RAUND + DICE
-//       $totalP1.textContent = `${TOTAL_P1} + ${TOTAL_RAUND}`
-//     } else {
-//       changePlayer()
-//     }
-//   } else {
-//     if (DICE !== 1) {
-//       TOTAL_RAUND = TOTAL_RAUND + DICE
-//       $totalP2.textContent = `${TOTAL_P2} + ${TOTAL_RAUND}`
-//     } else {
-//       changePlayer()
-//     }
-//   }
-// }
-
-// function holdFn() {
-//   changePlayer()
-// }
-
-// function resetFn() {
-//   $dice.textContent = '—'
-//   TURN = 'P1'
-//   $turnP1.textContent = '●'
-//   $turnP2.textContent = '○'
-//   $message.textContent = 'Player 1’s turn.'
-//   $totalP1.textContent = '0'
-//   $totalP2.textContent = '0'
-//   $roundP1.textContent = '0'
-//   $roundP2.textContent = '0'
-
-//   TOTAL_P1 = 0
-//   TOTAL_P2 = 0
-
-//   RAUND_P1 = 0
-//   RAUND_P2 = 0
-//   TOTAL_RAUND = 0
-// }
-
-// function changePlayer() {
-//   if (TURN === 'P1') {
-//     TOTAL_P1 = DICE === 1 ? TOTAL_P1 : TOTAL_P1 + TOTAL_RAUND
-//     $totalP1.textContent = TOTAL_P1
-//     TURN = 'P2'
-//     $turnP1.textContent = '○'
-//     $turnP2.textContent = '●'
-//     $message.textContent = 'Player 2’s turn.'
-//     TOTAL_RAUND = 0
-//   } else {
-//     TOTAL_P2 = DICE === 1 ? TOTAL_P2 : TOTAL_P2 + TOTAL_RAUND
-//     $totalP2.textContent = TOTAL_P2
-//     TURN = 'P1'
-//     $turnP1.textContent = '●'
-//     $turnP2.textContent = '○'
-//     $message.textContent = 'Player 1’s turn.'
-//     TOTAL_RAUND = 0
-//   }
-
-//   if (TURN === 'P1' && TOTAL_P1 >= 100) {
-//     $message.textContent = 'Player 1 Win.'
-//     RAUND_P1++
-//     $roundP1.textContent = RAUND_P1
-
-//     $totalP1.textContent = '0'
-//     $totalP2.textContent = '0'
-//     TOTAL_P1 = 0
-//     TOTAL_P2 = 0
-//   } else if (TURN === 'P2' && TOTAL_P2 >= 100) {
-//     $message.textContent = 'Player 2 Win.'
-//     RAUND_P2++
-//     $roundP2.textContent = RAUND_P2
-
-//     $totalP1.textContent = '0'
-//     $totalP2.textContent = '0'
-
-//     TOTAL_P1 = 0
-//     TOTAL_P2 = 0
-//   }
-// }
